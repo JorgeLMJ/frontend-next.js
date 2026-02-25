@@ -92,6 +92,57 @@ export default function Presentacion() {
   const t = translations[lang];
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
+  // --- NUEVOS ESTADOS PARA EL FORMULARIO DE CONTACTO ---
+  const [formData, setFormData] = useState({
+    nombres_apellidos: "",
+    telefono: "",
+    email: "",
+    mensaje: "",
+  });
+  const [estadoEnvio, setEstadoEnvio] = useState("");
+
+  // Manejador para actualizar el estado cuando el usuario escribe
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  // Manejador para enviar el formulario a tu backend en Go
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setEstadoEnvio("enviando");
+
+    try {
+      // ⚠️ Asegúrate de que esta URL sea la correcta de tu backend (incluyendo el puerto)
+      const respuesta = await fetch("http://localhost:8080/api/contactos", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (respuesta.ok) {
+        setEstadoEnvio("exito");
+        setFormData({ nombres_apellidos: "", telefono: "", email: "", mensaje: "" }); // Limpia el form
+      } else {
+        setEstadoEnvio("error");
+      }
+    } catch (error) {
+      console.error("Error al enviar formulario:", error);
+      setEstadoEnvio("error");
+    } finally {
+      // 👇 ESTA ES LA MAGIA QUE HACE QUE DESAPAREZCA
+      // Después de 3.5 segundos (3500 milisegundos), devolvemos el estado a vacío ("")
+      setTimeout(() => {
+        setEstadoEnvio("");
+      }, 3500);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-blue-600 selection:text-white relative scroll-smooth">
       
@@ -377,16 +428,66 @@ export default function Presentacion() {
                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15510.606348888252!2d-71.93635715!3d-13.52571995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x916dd5d36e2f1db5%3A0xc34a5d852a3a5f8!2sSan%20Sebasti%C3%A1n%2C%20Cusco!5e0!3m2!1ses!2spe!4v1700000000000!5m2!1ses!2spe" width="100%" height="100%" style={{ border: 0 }} allowFullScreen={false} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
                 </div>
               </div>
+
+              {/* AQUI ESTÁ EL FORMULARIO MODIFICADO */}
               <div className="bg-slate-800/50 p-8 rounded-3xl border border-slate-700 shadow-xl">
                 <h3 className="text-2xl font-bold mb-8">Escríbenos</h3>
-                <form className="flex flex-col gap-5">
-                  <input type="text" placeholder="Nombres y Apellidos" className="w-full p-4 rounded-xl bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
-                  <input type="tel" placeholder="Teléfono" className="w-full p-4 rounded-xl bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
-                  <input type="email" placeholder="Email" className="w-full p-4 rounded-xl bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
-                  <textarea placeholder="Mensaje" rows={5} className="w-full p-4 rounded-xl bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" required></textarea>
-                  <button type="submit" className="mt-2 w-full border-2 border-blue-500 bg-blue-600 hover:bg-transparent hover:text-blue-400 text-white font-black py-4 px-8 rounded-xl transition-all duration-300 uppercase tracking-widest">Enviar Mensaje</button>
+                <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                  <input 
+                    type="text" 
+                    name="nombres_apellidos"
+                    value={formData.nombres_apellidos}
+                    onChange={handleChange}
+                    placeholder="Nombres y Apellidos" 
+                    className="w-full p-4 rounded-xl bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                    required 
+                  />
+                  <input 
+                    type="tel" 
+                    name="telefono"
+                    value={formData.telefono}
+                    onChange={handleChange}
+                    placeholder="Teléfono" 
+                    className="w-full p-4 rounded-xl bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                    required 
+                  />
+                  <input 
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Email" 
+                    className="w-full p-4 rounded-xl bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                    required 
+                  />
+                  <textarea 
+                    name="mensaje"
+                    value={formData.mensaje}
+                    onChange={handleChange}
+                    placeholder="Mensaje" 
+                    rows={5} 
+                    className="w-full p-4 rounded-xl bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" 
+                    required
+                  ></textarea>
+                  
+                  <button 
+                    type="submit" 
+                    disabled={estadoEnvio === "enviando"}
+                    className={`mt-2 w-full border-2 border-blue-500 bg-blue-600 hover:bg-transparent hover:text-blue-400 text-white font-black py-4 px-8 rounded-xl transition-all duration-300 uppercase tracking-widest ${estadoEnvio === "enviando" ? "opacity-50 cursor-not-allowed" : ""}`}
+                  >
+                    {estadoEnvio === "enviando" ? "Enviando..." : "Enviar Mensaje"}
+                  </button>
+
+                  {/* Mensajes visuales de éxito o error */}
+                  {estadoEnvio === "exito" && (
+                    <p className="text-green-400 text-center font-bold mt-2">¡Mensaje enviado con éxito!</p>
+                  )}
+                  {estadoEnvio === "error" && (
+                    <p className="text-red-400 text-center font-bold mt-2">Error al enviar. Intenta de nuevo.</p>
+                  )}
                 </form>
               </div>
+
             </div>
           </div>
         </section>
@@ -423,7 +524,6 @@ export default function Presentacion() {
           </svg>
         </a>
       </div>
-      
     </div>
   );
 }
