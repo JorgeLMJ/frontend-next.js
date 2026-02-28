@@ -407,14 +407,14 @@ export default function Presentacion() {
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" /></svg>
                       Visítanos
                     </h4>
-                    <p className="text-slate-300 ml-8">Cusco San Sebastian, Paradero Sexto</p>
+                    <p className="text-slate-300 ml-8">Cusco, Donostia, San Sebastian Guipúzcoa, Paradero Sexto</p>
                   </div>
                   <div>
                     <h4 className="font-bold text-lg flex items-center gap-3 mb-1">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
                       Llámanos
                     </h4>
-                    <p className="text-slate-300 ml-8">+01 332-2121 | +51 987654321</p>
+                    <p className="text-slate-300 ml-8">957301107 | +51 960272190</p>
                   </div>
                   <div>
                     <h4 className="font-bold text-lg flex items-center gap-3 mb-1">
@@ -425,8 +425,16 @@ export default function Presentacion() {
                   </div>
                 </div>
                 <div className="w-full h-64 bg-slate-800 rounded-xl overflow-hidden border border-slate-700 shadow-inner">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15510.606348888252!2d-71.93635715!3d-13.52571995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x916dd5d36e2f1db5%3A0xc34a5d852a3a5f8!2sSan%20Sebasti%C3%A1n%2C%20Cusco!5e0!3m2!1ses!2spe!4v1700000000000!5m2!1ses!2spe" width="100%" height="100%" style={{ border: 0 }} allowFullScreen={false} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
-                </div>
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!4v1772317551042!6m8!1m7!1s5dmv583EeR7PaCVakxizoA!2m2!1d-13.53066702504207!2d-71.92793416169567!3f282.80403870027675!4f-26.329498839087904!5f0.7820865974627469" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen={true} 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
               </div>
 
               {/* AQUI ESTÁ EL FORMULARIO MODIFICADO */}
@@ -513,12 +521,12 @@ export default function Presentacion() {
               Hola 👋 <br/> ¿En qué podemos ayudarte?
               <div className="absolute top-1/2 -left-2 w-4 h-4 bg-white border-l border-b border-slate-100 transform -translate-y-1/2 rotate-45"></div>
             </div>
-            <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer" className="mt-6 flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#128C7E] text-white py-3 px-4 rounded-full font-bold text-sm transition-transform hover:scale-[1.02] shadow-lg">
+            <a href="https://wa.me/957301107" target="_blank" rel="noopener noreferrer" className="mt-6 flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#128C7E] text-white py-3 px-4 rounded-full font-bold text-sm transition-transform hover:scale-[1.02] shadow-lg">
               Abrir chat
             </a>
           </div>
         </div>
-        <a href="https://wa.me/51987654321" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white w-14 h-14 rounded-full shadow-[0_4px_14px_0_rgba(37,211,102,0.5)] hover:bg-[#128C7E] hover:scale-110 transition-all duration-300 flex items-center justify-center relative cursor-pointer block">
+        <a href="https://wa.me/957301107" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white w-14 h-14 rounded-full shadow-[0_4px_14px_0_rgba(37,211,102,0.5)] hover:bg-[#128C7E] hover:scale-110 transition-all duration-300 flex items-center justify-center relative cursor-pointer block">
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
           </svg>
