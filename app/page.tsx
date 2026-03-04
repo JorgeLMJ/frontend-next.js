@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
+
 // --- DICCIONARIO DE TRADUCCIÓN ---
 const translations = {
   es: {
@@ -23,7 +24,7 @@ const translations = {
     ],
     empresa: {
       subtitle: 'Nuestra Empresa',
-      title: 'MOTORES INGENIEROS',
+      title: 'MOTORES',
       p1: 'Somos una empresa peruana con presencia nacional e internacional, que brinda soluciones integrales en el mantenimiento, reparación y servicios in situ en el rubro electromecánico desde hace más de 15 años.',
       p2: 'Contamos con unas amplias instalaciones de más de 5000 m2 ubicadas estratégicamente en Cusco San Sebastian, Paradero Sexto y una sucursal en la ciudad de Arequipa.',
       p3: 'Conscientes de las necesidades del mercado de requerir servicios que cumplan con las estrictas normas de calidad, estamos a vuestra disposición para brindarles nuestra amplia experiencia, respaldada por un equipo de ingenieros y técnicos de alto nivel profesional, así como maquinarias y equipos de pruebas modernos, acorde con las exigencias actuales del mercado. Somos Miembros de EASA (Electrical Apparatus Service Association), quien nos asesora en las reparaciones de máquinas eléctricas.'
